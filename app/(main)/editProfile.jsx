@@ -20,6 +20,7 @@ import {
 } from "../../services/imageService";
 import Input from '../../components/Input'
 import { validateUsername } from '../../helpers/validation'
+import { Picker } from '@react-native-picker/picker';
 
 const EditProfile = () => {
 
@@ -34,6 +35,7 @@ const EditProfile = () => {
     image: null,
     bio: "",
     address: "",
+    lifeStyle: "",
   });
 
   const [usernameError, setUsernameError] = useState(''); // kullanıcı adı hatası state'i
@@ -49,6 +51,7 @@ const EditProfile = () => {
         image: currentUser.image || null,
         address: currentUser.address || "",
         bio: currentUser.bio || "",
+        lifeStyle: currentUser.lifeStyle || "",
       });
       setPrevUsername(currentUser.username || '');
     }
@@ -79,8 +82,9 @@ const EditProfile = () => {
 
   const onSubmit = async () => {
     let userData = { ...user };
-    let { name, username, address, image, bio } = userData;
-    if (!name || !username || !address || !bio) {
+    let { name, username, lifeStyle, image, bio, address } = userData;
+    userData.email = currentUser.email;
+    if (!name || !username || !lifeStyle || !bio) {
       Alert.alert("Profile", "Please fill all the fields");
       return;
     }
@@ -186,6 +190,23 @@ const EditProfile = () => {
               value={user.bio}
               containerStyle={styles.bio}
             />
+
+            <View style={styles.pickerContainer}>
+                <Text style={styles.pickerLabel}>Yaşam Tarzı:</Text>
+                <Picker
+                    selectedValue={user.lifeStyle} 
+                    onValueChange={(itemValue, itemIndex) =>
+                        setUser({ ...user, lifeStyle: itemValue }) 
+                    }
+                    style={styles.picker}
+                    itemStyle={styles.pickerItem} 
+                >
+                    <Picker.Item label="Seçiniz..." value="" enabled={false} /> 
+                    <Picker.Item label="Vegan" value="Vegan" />
+                    <Picker.Item label="Vejetaryen" value="Vejetaryan" />
+                    <Picker.Item label="Navegan" value="Navegan" />
+                </Picker>
+            </View>
 
             {/* button */}
             <Button title="Update" loading={loading} onPress={onSubmit} />

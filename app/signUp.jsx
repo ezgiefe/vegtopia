@@ -100,7 +100,7 @@ const SignUp = () => {
                 console.error('updateUser ile kullanici olusturulamadi:', profileRes.msg);
                 Alert.alert('Kayıt Ol', 'Hesap oluşturuldu ancak profil bilgileri kaydedilirken bir sorun oluştu.');
             }
-        }
+        } 
 
       if (session) {
             Alert.alert('Kayıt Başarılı', 'Hesabınız oluşturuldu ve giriş yapıldı!');

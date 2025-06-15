@@ -113,32 +113,17 @@ const UserHeader = ({user, router, handleLogout}) => {
                         </Pressable>
                     </View>
 
-                    {/* username & address */}
+                    {/* name & lifeSytle */}
                     <View style={{alignItems: 'center', gap: 4}}>
                         <Text style={styles.userName}> { user && user.name } </Text>
-                        <Text style={styles.infoText}> {user && user.address} </Text>
+                        <Text style={styles.infoText}> {user && user.lifeStyle} </Text>
                     </View>
 
-                    {/* email, phone */}
+                    {/* bio and address */}
                     <View style={{gap: 10}}>
-                        <View style={styles.info}>
-                            <Icon name="email" size={20} color={theme.colors.light_gray} />
-                            <Text style={[styles.infoText, {fontSize: hp(1.8)}]}> 
-                                {user && user.email}
-                            </Text>
-                        </View>
-                        {
-                            user && user.phoneNumber && (
-                            <View style={styles.info}>
-                                <Icon name="phone" size={20} color={theme.colors.light_gray} />
-                                <Text style={[styles.infoText, {fontSize: hp(1.8)}]}> 
-                                    {
-                                    user.phoneNumber
-                                    } 
-                                </Text>
-                            </View>
-                            )
-                        }
+                      <Text style={styles.infoText}> {user && user.username} </Text>
+                      <Text style={styles.infoText}> {user && user.address} </Text>
+                      
                         {
                             user && user.bio && (
                             <Text style={[styles.infoText]}>{user.bio}</Text>
