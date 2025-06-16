@@ -114,11 +114,16 @@ const Home = () => {
 
         {/* header */}
         <View style={styles.header}>
-          <Pressable>
-            <Text style={styles.title}>Vegtopia</Text>
-          </Pressable>
+          <View style={styles.leftside}>
+            <Pressable>
+              <Text style={styles.title}>Vegtopia</Text>
+            </Pressable>
+            <Pressable onPress={() => router.push('search')}>
+                <Icon name="magnify" size={hp(3.2)} color={theme.colors.primary} style={styles.searchButton} />
+            </Pressable>
+          </View>
           
-          <View style={styles.icons}>
+          <View style={styles.rightside}>
             <Pressable onPress={() => {
               setNotificationCount(0);
               router.push('notifications');
@@ -193,6 +198,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginHorizontal: wp(4)
   },
+  leftside: {
+    flexDirection: 'row',
+    
+  },
   title: {
     color: theme.colors.text,
     fontSize: hp(3.2),
@@ -206,7 +215,7 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.gray,
     borderWidth: 3
   },
-  icons: {
+  rightside: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -236,5 +245,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: hp(1.2),
     fontWeight: theme.fonts.bold
+  },
+  searchButton: {
+    marginLeft: 10,
+    marginTop: 5
   }
 })

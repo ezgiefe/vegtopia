@@ -208,6 +208,12 @@ const EditProfile = () => {
                 </Picker>
             </View>
 
+            <Button 
+              title="Şifreyi Değiştir" 
+              onPress={() => router.push('changePassword')} // 'changePassword' rotasının doğru olduğundan emin ol
+              style={{marginTop: hp(2)}} // Biraz boşluk bırakmak için
+            />
+
             {/* button */}
             <Button title="Update" loading={loading} onPress={onSubmit} />
           </View>

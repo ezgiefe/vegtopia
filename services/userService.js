@@ -64,3 +64,20 @@ export const isUsernameAvailable = async (username) => {
     return { success: false, msg: err.message };
   }
 };
+
+export const fetchAllUsers = async () => {
+    try {
+        const { data, error } = await supabase
+            .from('users')
+            .select('id, username, name, image'); 
+
+        if (error) {
+            console.error('Error fetching all users:', error.message);
+            return { success: false, msg: error.message };
+        }
+        return { success: true, data };
+    } catch (err) {
+        console.error('Exception fetching all users:', err.message);
+        return { success: false, msg: err.message };
+    }
+};
