@@ -85,20 +85,19 @@ const PostDetails = () => {
         // console.log('result: ', res);
         if(res.success){
             if(user.id!=post.userId){
-                // send notification
                 let notify = {
                     senderId: user.id,
                     receiverId: post.userId,
-                    title: 'commented on your post',
+                    title: 'postuna yorum yaptı',
                     data: JSON.stringify({postId: post.id, commentID: res?.data?.id})
                 }
-                createNotification(notify); //import et oluşturduktan sonra
+                createNotification(notify); 
             }
 
             inputRef?.current?.clear();
             commentRef.current="";
         }else{
-            Alert.alert('Comment', res.msg);
+            Alert.alert('Yorum', res.msg);
         }
     }
 
@@ -111,7 +110,7 @@ const PostDetails = () => {
                 return updatedPost;
             })
         }else{
-            Alert.alert('Comment', res.msg);
+            Alert.alert('Yorum', res.msg);
         }
     }
 
@@ -140,7 +139,7 @@ const PostDetails = () => {
     if(!post){
         return (
             <View style={[styles.center, {justifyContent: 'flex-start', marginTop: 100}]}>
-                <Text style={styles.notFound}>Post not found!</Text>
+                <Text style={styles.notFound}>Post bulunamadı!</Text>
             </View>     
         )  
     }
@@ -163,7 +162,7 @@ const PostDetails = () => {
             <View style={styles.inputContainer}>
                 <Input
                     inputRef={inputRef}
-                    placeholder='Type comment...'
+                    placeholder='Yorum yaz...'
                     placeholderTextColor={theme.colors.textLight}
                     onChangeText={value=> commentRef.current=value}
                     containerStyles={{flex: 1, height: hp(6.2), borderRadius: theme.radius.xl}}
@@ -176,7 +175,7 @@ const PostDetails = () => {
                         </View>
                     ):(
                         <TouchableOpacity onPress={onNewComment} style={styles.sendIcon}>
-                            <Icon name="send" color={theme.colors.primaryDark} />
+                            <Icon name="send" color={theme.colors.secondary} />
                         </TouchableOpacity>
                     )
                 }
@@ -198,7 +197,7 @@ const PostDetails = () => {
                 }
                 {
                     post?.comments?.length==0 && (
-                        <Text style={{color: theme.colors.text, marginLeft: 5,}}>Be first to comment!</Text>
+                        <Text style={{color: theme.colors.text, marginLeft: 5,}}>Yorum yapan ilk kişi ol!</Text>
                     )
                 }
             </View>

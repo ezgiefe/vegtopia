@@ -47,46 +47,44 @@ const Login = () => {
 
         {/* welcome */}
         <View>
-          <Text style={styles.welcomeText}>Hey,</Text>
-          <Text style={styles.welcomeText}>Welcome Back</Text>
+          <Text style={styles.welcomeText}>Merhaba,</Text>
+          <Text style={styles.welcomeText}>Tekrar Hoşgeldin</Text>
         </View>
 
         {/* form */}
         <View style={styles.form}>
-          <Text style={{fontSize: hp(1.5), color: 'black'}}>
-            Please login to continue
+          <Text style={{fontSize: hp(1.5), color: theme.colors.text}}>
+            Devam etmek için giriş yapınız
           </Text>
 
           <Input
-          icon={<Icon name="email-outline" size={40} color={theme.colors.light_gray}/>}
-          placeholder='Enter your email'
+          icon={<Icon name="email-outline" size={40} color={theme.colors.primary_soft}/>}
+          placeholder='Emailinizi giriniz'
           placeholderTextColor={theme.colors.textLight}
           onChangeText={value => emailRef.current = value}
           />
 
           <Input
-          icon={<Icon name="lock-outline" size={40} color={theme.colors.light_gray}/>}
-          placeholder='Enter your password'
+          icon={<Icon name="lock-outline" size={40} color={theme.colors.primary_soft}/>}
+          placeholder='Şifrenizi giriniz'
           placeholderTextColor={theme.colors.textLight}
           secureTextEntry
           onChangeText={value => passwordRef.current = value}
           />
-          <Text style={styles.forgotPassword}>
-            Forgot Password?
-          </Text>
+          
 
           {/* button */}
-          <Button title={'Login'} loading={loading} onPress={onSubmit}/>
+          <Button title={'Giriş'} loading={loading} onPress={onSubmit}/>
         </View>
 
           {/* footer */}
           <View style= {styles.footer}>
             <Text style={styles.footerText}>
-              Don't have an account?
+              Hesabınız mı yok?
             </Text>
             <Pressable onPress={() => router.push('signUp')}>
-              <Text style={[styles.footerText, {color: theme.colors.primary, fontWeight: theme.fonts.semibold}]}>
-                Sign up
+              <Text style={[styles.footerText, {color: theme.colors.secondary, fontWeight: theme.fonts.semibold}]}>
+                Kayıt olun
               </Text>
             </Pressable>
           </View>
@@ -107,17 +105,13 @@ const styles = StyleSheet.create({
   welcomeText:{
     fontSize: hp(4),
     fontWeight: theme.fonts.bold,
-    color: 'black'
+    color: theme.colors.primary
   },
 
   form:{
     gap: 25
   },
-  forgotPassword:{
-    textAlign: 'right',
-    fontWeight: theme.fonts.semibold,
-    color: 'black'
-  },
+  
   footer:{
     flexDirection:'row',
     justifyContent: 'center',
@@ -126,7 +120,7 @@ const styles = StyleSheet.create({
   },
   footerText:{
     textAlign: 'center',
-    color: theme.colors.black,
+    color: theme.colors.primary,
     fontSize: hp(1.6)
   }
 })

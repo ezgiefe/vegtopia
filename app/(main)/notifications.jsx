@@ -29,9 +29,9 @@ const Notifications = () => {
   }
   
   return (
-    <ScreenWrapper >
+    <ScreenWrapper bg='white'>
       <View style={styles.container}>
-        <Header title="Notifications" />
+        <Header title="Bildirimler" />
 
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.listStyle}>
           {
@@ -47,7 +47,7 @@ const Notifications = () => {
           }
           {
             notifications.length==0 && (
-              <Text style={styles.noData}>No notifications yet</Text>
+              <Text style={styles.noData}>Daha bildiriminiz yok</Text>
             )
           }
         </ScrollView>
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: wp(4),
+    
   },
   listStyle: {
     paddingVertical: 20,

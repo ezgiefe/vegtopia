@@ -56,7 +56,7 @@ const Profile = () => {
     }
 
   return (
-    <ScreenWrapper bg={theme.colors.bg}>
+    <ScreenWrapper bg='white'>
       <FlatList
         data={posts}
         ListHeaderComponent={<UserHeader user={user} handleLogout={handleLogout} router={router} />}
@@ -91,9 +91,9 @@ const Profile = () => {
 
 const UserHeader = ({user, router, handleLogout}) => {
     return (
-        <View style= {{flex:1, backgroundColor: theme.colors.bg, paddingHorizontal:wp(4)}}>
+        <View style= {{flex:1, backgroundColor: 'white', paddingHorizontal:wp(4)}}>
             <View>
-               <Header title= 'Profile' showBackButton={true} mb={30} />
+               <Header title= 'Profil' showBackButton={true} mb={30} />
                 <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
                     <Icon name="logout" size={hp(3.2)} color= {theme.colors.primary} />
                 </TouchableOpacity> 
@@ -109,24 +109,31 @@ const UserHeader = ({user, router, handleLogout}) => {
                         rounded={theme.radius.xxl*1.4}
                         />
                         <Pressable style={styles.editIcon} onPress={()=> router.push('/editProfile')}>
-                            <Icon name="pencil-outline" strokeWidth={2.5} size={20} />
+                            <Icon name="pencil-outline" strokeWidth={2.5} size={20} style={{color: theme.colors.secondary}} />
                         </Pressable>
                     </View>
 
                     {/* name & lifeSytle */}
                     <View style={{alignItems: 'center', gap: 4}}>
                         <Text style={styles.userName}> { user && user.name } </Text>
-                        <Text style={styles.infoText}> {user && user.lifeStyle} </Text>
+                        <Text style={styles.lifeStyleText}> {user && user.lifeStyle} </Text>
                     </View>
 
-                    {/* bio and address */}
+                    {/* bio, username and address */}
                     <View style={{gap: 10}}>
-                      <Text style={styles.infoText}> {user && user.username} </Text>
-                      <Text style={styles.infoText}> {user && user.address} </Text>
+                      <View style= {{flexDirection: 'row'}}>
+                        <Icon style={styles.icon} name="at" strokeWidth={2.5} size={20} />
+                        <Text style={styles.infoText}> {user && user.username} </Text>
+                      </View>
+                      <View style= {{flexDirection: 'row'}}>
+                        <Icon style={styles.icon} name="map-marker-outline" strokeWidth={2.5} size={20} />
+                        <Text style={styles.infoText}> {user && user.address} </Text>
+                      </View>
+                      
                       
                         {
                             user && user.bio && (
-                            <Text style={[styles.infoText]}>{user.bio}</Text>
+                            <Text style={[styles.bioText]}>{user.bio}</Text>
                             )
                         }                
                     </View>
@@ -171,25 +178,37 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: hp(3),
     fontWeight: '500',
-    color: theme.colors.black
+    color: theme.colors.primary
   },
-  info: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
+  icon:{
+    fontSize: hp(2.5),
+    color: theme.colors.primary_soft
+  },
+  // info: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   gap: 10,
+  // },
+  lifeStyleText: {
+    fontSize: hp(1.6),
+    fontWeight: '400',  
+    color: theme.colors.primary
   },
   infoText: {
-    fontSize: hp(1.6),
-    fontWeight: '500',
-    color: theme.colors.light_gray
+    fontSize: hp(1.7),
+    fontWeight: '400',
+    color: theme.colors.text
+  },
+  bioText: {
+    fontSize: hp(1.7),
+    fontWeight: '400',
+    color: theme.colors.text
   },
 
   logoutButton: {
     position: 'absolute',
     right: 0,
-    padding: 5,
-    borderRadius: theme.radius.sm,
-    backgroundColor: '#fee2e2'
+    padding: 5
   },
   listStyle: {
     paddingHorizontal: wp(4),
@@ -199,6 +218,8 @@ const styles = StyleSheet.create({
   noPosts: {
     fontSize: hp(2),
     textAlign: 'center',
-    color: theme.colors.black
-  }
+    color: theme.colors.secondary
+  },
+  
+
 })

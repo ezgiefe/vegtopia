@@ -14,13 +14,11 @@ const welcome = () => {
     <ScreenWrapper bg={theme.colors.bg}>
       <StatusBar style="dark"a/>
       <View style={styles.container} >
-        {/* welcome image */}
         <Text style={styles.welcomeHeader}>Vegtopia</Text>
-        {/*<Image style={styles.welcomeImage} resizeMode= 'contain' source={require('../assets/images/vegtopiaLogo.png')}  />*/}
 
           {/* footer */}
         <View style={styles.footer}>
-          <Button title='Getting Started'
+          <Button title='Hadi Başlayalım'
           buttonStyle={{marginHorizantal: wp(3)}}
           onPress={() => router.push('signUp')}
            />
@@ -28,14 +26,14 @@ const welcome = () => {
 
         <View style={styles.bottomTextContainer}>
           <Text style={styles.loginText}>
-            Already have an account!
+            Zaten bir hesabın mı var?
           </Text>
 
           <Pressable onPress={() => router.push('login')}>
-            <Text style={[styles.loginText, {color: theme.colors.primary, fontWeight: theme.fonts.bold}]}>
-              Login
+            <Text style={[styles.loginText, {color: theme.colors.secondary, fontWeight: theme.fonts.bold}]}>
+              Giriş Yap
             </Text>
-          </Pressable>
+          </Pressable> 
 
         </View>
 
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colors.bg ,
+    backgroundColor: 'white' ,
     paddingHorizontal: wp(4),
 
   }, 
@@ -61,24 +59,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     color: theme.colors.primary,
     fontFamily: 'AkayaKanadaka',
-  },
   
-  welcomeImage:{
-    width: wp(10),
-    height: hp(5),
-    alignSelf: 'center',
-  },  
+  },
+   
   footer:{
     gap: 30,
     width: '100%',
-    marginTop: 100
+    marginTop: 100,
   },
 
   bottomTextContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 5
+    gap: 5,
+    marginTop: 10,
   },
   loginText:{
     textAlign: 'center',

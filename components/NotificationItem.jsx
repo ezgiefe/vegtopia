@@ -17,9 +17,9 @@ const NotificationItem = ({router, item}) => {
         <Avatar uri={item?.sender?.image} size={hp(5)} />
         <View style={styles.nameTitle}>
             <Text style={styles.text}>{item?.sender?.name}</Text>
-            <Text style={[styles.text, {color: theme.colors.textDark}]}>{item?.title}</Text>
+            <Text style={[styles.text, {color: theme.colors.bg}]}>{item?.title}</Text>
         </View>
-        <Text style={[styles.text, {color: theme.colors.textLight}]}>{createdAt}</Text>
+        <Text style={[styles.text, {color: theme.colors.bg}]}>{createdAt}</Text>
     </TouchableOpacity>
   ) 
 }
@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         gap: 12,
-        backgroundColor: 'white',
-        borderWidth: 0.5,
+        backgroundColor: theme.colors.primary_soft,
+        borderWidth: 0.6,
         borderColor: theme.colors.darkLight,
         padding: 15,
         // paddingVertical: 12,
@@ -44,10 +44,11 @@ const styles = StyleSheet.create({
     nameTitle: {
         flex: 1,
         gap: 2,
+        
     },
     text: {
         fontSize: hp(1.6),
         fontWeight: theme.fonts.medium,
-        color: theme.colors.text,
+        color: theme.colors.bg,
     }
 })

@@ -69,7 +69,7 @@ const Home = () => {
       .subscribe();
 
       let notificationChannel;
-        if (user?.id) {
+        if (user?.id) { 
           const getInitialNotificationCount = async () => {
               const res = await fetchUnreadNotificationCount(user.id);
               if (res.success) {
@@ -109,7 +109,7 @@ const Home = () => {
     }
 
   return (
-    <ScreenWrapper bg={theme.colors.bg}>
+    <ScreenWrapper bg="white">
       <View style= {styles.container}>
 
         {/* header */}
@@ -165,7 +165,7 @@ const Home = () => {
           }
           onEndReached={() => {
             getPosts();
-            console.log('got to the end');
+            console.log('Sona geldiniz! :)');
           }}
           onEndReachedThreshold={0} 
           ListFooterComponent={hasMore? (
@@ -174,7 +174,7 @@ const Home = () => {
               </View>
             ):(
               <View style={{marginVertical: 30}}>
-                <Text style={styles.noPosts}>No more posts</Text>
+                <Text style={styles.noPosts}>Akıştaki postlar bu kadar...</Text>
               </View>
             )
           }          
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     
   },
   title: {
-    color: theme.colors.text,
+    color: theme.colors.primary,
     fontSize: hp(3.2),
     fontWeight: theme.fonts.bold
   },
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
   noPosts: {
     fontSize: hp(2),
     textAlign: 'center',
-    color: theme.colors.text
+    color: theme.colors.secondary
   },
   pill: {
     position: 'absolute',

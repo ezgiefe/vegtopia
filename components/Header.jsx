@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     title:{
         fontSize: hp(2.7),
         fontWeight: theme.fonts.semibold,
-        color: theme.colors.black
+        color: theme.colors.primary
     },
     backButton:{
         position:'absolute',

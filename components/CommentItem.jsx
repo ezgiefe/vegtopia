@@ -17,14 +17,14 @@ const CommentItem = ({
     const createdAt = moment(item?.created_at).format('MMM D');
 
     const handleDelete = ()=>{
-        Alert.alert('Confirm', 'Are you sure you want to do this?', [
+        Alert.alert('Doğrulama', 'Bu işlemi ypamak istediğinden emin misin?', [
             {
-              text: 'Cancel',
+              text: 'İptal',
               onPress: () => console.log('Cancel delete'),
               style: 'cancel',
             },
             {
-                text: 'Delete', 
+                text: 'Sil', 
                 onPress: () => onDelete(item),
                 style: 'destructive'
             },
@@ -47,7 +47,7 @@ const CommentItem = ({
                 {
                     canDelete && (
                         <TouchableOpacity onPress={handleDelete}>
-                            <Icon name="delete" size={20} color={theme.colors.rose} />
+                            <Icon name="delete" size={20} color={theme.colors.secondary} />
                         </TouchableOpacity>
                     )
                 }

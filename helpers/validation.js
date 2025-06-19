@@ -20,7 +20,7 @@ export const validateUsername = (username) => {
     }
 
     return { isValid: true, message: '' };
-};
+}; 
 
 export const validateEmail = (email) => {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

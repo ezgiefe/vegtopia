@@ -59,8 +59,3 @@ export const downloadFile = async (url)=>{
         return null;
     }
 }
-
-const getLocalFilePath = filePath=>{
-    let fileName = filePath.split('/').pop();
-    return `${FileSystem.documentDirectory}${fileName}`;
-}

@@ -32,18 +32,34 @@ const SignUp = () => {
       let email = emailRef.current.trim();
       let password = passwordRef.current.trim();
 
-      if (!name) {setNameError('İsim boş olamaz.');} 
-      else {setNameError('');}
+      let formIsValid = true;
+
+      if (!name) {
+        setNameError('İsim boş olamaz.');
+        formIsValid = false;
+      } else {setNameError('');}
 
       const usernameValidation = validateUsername(username);
-      setUsernameError(usernameValidation.isValid ? '' : usernameValidation.message);
+      if (!usernameValidation.isValid) { 
+        setUsernameError(usernameValidation.message);
+        formIsValid = false; 
+      } else {setUsernameError('');}
 
       const emailValidation = validateEmail(email);
-      setEmailError(emailValidation.isValid ? '' : emailValidation.message);
+      if (!emailValidation.isValid) { 
+        setEmailError(emailValidation.message);
+        formIsValid = false; 
+      } else {setEmailError('');}
 
       const passwordValidation = validatePassword(password);
-      setPasswordError(passwordValidation.isValid ? '' : passwordValidation.message);
+      if (!passwordValidation.isValid) { 
+        setPasswordError(passwordValidation.message);
+        formIsValid = false; 
+      } else {setPasswordError(''); }
 
+      if (!formIsValid) { return; }
+
+      // validasyonların hepsi true ise devam
       setLoading(true);
       try {
 
@@ -116,7 +132,7 @@ const SignUp = () => {
 
     }
   return (
-    <ScreenWrapper bg={theme.colors.bg}>
+    <ScreenWrapper bg='white'>
       <StatusBar  />
       <View style={styles.container}>
         <BackButton router={router} />
@@ -129,7 +145,7 @@ const SignUp = () => {
 
         {/* form */}
         <View style={styles.form}>
-          <Text style={{fontSize: hp(1.5), color: 'black'}}>
+          <Text style={{fontSize: hp(1.5), color: theme.colors.text}}>
             Bir hesap oluşturmak için lütfen aşağıdaki detayları doldurun
           </Text>
 
@@ -166,12 +182,8 @@ const SignUp = () => {
           />
           {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
-          <Text style={styles.forgotPassword}>
-            Şifreni mi unuttun?
-          </Text>
-
-          {/* button */}
-          <Button title={'Sign up'} loading={loading} onPress={onSubmit}
+          <Button title={'Kayıt Ol'} loading={loading} onPress={onSubmit}
+          style={{marginBottom:0}}
           />
         </View>
 
@@ -181,13 +193,13 @@ const SignUp = () => {
               Zaten bir hesabın mı var?
             </Text>
             <Pressable onPress={() => router.push('login')}>
-              <Text style={[styles.footerText, {color: theme.colors.primary, fontWeight: theme.fonts.semibold}]}>
+              <Text style={[styles.footerText, {color: theme.colors.secondary, fontWeight: theme.fonts.semibold}]}>
                 Login
               </Text>
             </Pressable>
           </View>
       </View>
-    </ScreenWrapper>
+    </ScreenWrapper> 
   )
 }
 export default SignUp
@@ -203,26 +215,22 @@ const styles = StyleSheet.create({
   welcomeText:{
     fontSize: hp(4),
     fontWeight: theme.fonts.bold,
-    color: 'black'
+    color: theme.colors.primary
   },
 
   form:{
-    gap: 25
-  },
-  forgotPassword:{
-    textAlign: 'right',
-    fontWeight: theme.fonts.semibold,
-    color: 'black'
+    gap: 30
   },
   footer:{
     flexDirection:'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 5
+    gap: 5,
+    
   },
   footerText:{
     textAlign: 'center',
-    color: theme.colors.black,
+    color: theme.colors.primary,
     fontSize: hp(1.6)
   },
   errorText: {

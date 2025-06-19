@@ -71,7 +71,7 @@ const newPost = () => {
 
   const onSubmit = async () => {
     if (!bodyRef.current && !file) {
-      Alert.alert("Post", "Please choose an image or add post body!");
+      Alert.alert("Post", "Paylaşmak için dosya veya metin eklemeniz gerekiyor!");
       return;
     }
 
@@ -132,7 +132,7 @@ const newPost = () => {
   return (
     <ScreenWrapper bg="white">
       <View style={styles.container}>
-        <Header title="Create Post"  />
+        <Header title="Post Yarat"  />
 
         <ScrollView contentContainerStyle={{ gap: 20 }}>
           {/* header */}
@@ -185,20 +185,18 @@ const newPost = () => {
             </View>
           )}
           <View style={styles.media}>
-            <Text style={styles.addImageText}>Add to your post</Text>
+            <Text style={styles.addImageText}>Postuna ekle</Text>
             <View style={styles.mediaIcons}>
               <TouchableOpacity onPress={() => onPick(true)}>
-                <Icon name="image" size={30} color={theme.colors.black} />
+                <Icon name="image" size={30} color={theme.colors.primary} />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => onPick(false)}>
-                <Icon name="video" size={33} color={theme.colors.black} />
-              </TouchableOpacity>
+              
             </View>
           </View>
         </ScrollView>
         <Button
           buttonStyle={{ height: hp(6.2) }}
-          title={post && post.id ? "Update" : "Post"}
+          title={post && post.id ? "Güncelle" : "Post"}
           loading={loading}
           hasShadow={false}
           onPress={onSubmit}
@@ -213,13 +211,11 @@ export default newPost
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: 'red',
     marginBottom: 30,
     paddingHorizontal: wp(4),
     gap: 15,
   },
   title: {
-    // marginBottom: 10,
     fontSize: hp(2.5),
     fontWeight: theme.fonts.semibold,
     color: theme.colors.black,
@@ -233,7 +229,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: hp(2.2),
     fontWeight: theme.fonts.semibold,
-    color: theme.colors.black,
+    color: theme.colors.primary,
   },
   avatar: {
     height: hp(6.5),
@@ -246,18 +242,14 @@ const styles = StyleSheet.create({
   publicText: {
     fontSize: hp(1.7),
     fontWeight: theme.fonts.medium,
-    color: theme.colors.black,
-  },
-
-  textEditor: {
-    // marginTop: 10,
+    color: theme.colors.text,
   },
 
   media: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderWidth: 1.5,
+    borderWidth: 1,
     padding: 12,
     paddingHorizontal: 18,
     borderRadius: theme.radius.xl,
@@ -273,12 +265,10 @@ const styles = StyleSheet.create({
   addImageText: {
     fontSize: hp(1.9),
     fontWeight: theme.fonts.semibold,
-    color: theme.colors.black,
+    color: theme.colors.text,
   },
   imageIcon: {
-    // backgroundColor: theme.colors.gray,
     borderRadius: theme.radius.md,
-    // padding: 6,
   },
   file: {
     height: hp(30),
@@ -292,9 +282,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 10,
     right: 10,
-    // shadowColor: theme.colors.textLight,
-    // shadowOffset: {width: 0, height: 3},
-    // shadowOpacity: 0.6,
-    // shadowRadius: 8
+    
   },
 })

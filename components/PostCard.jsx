@@ -44,19 +44,17 @@ const PostCard = ({
     const [loading, setLoading] = useState(false);
     const createdAt = moment(item?.created_at).format('MMM D');
     const htmlBody = { html: item?.body };
-    const liked = likes.filter(like=> like.userId==currentUser?.id)[0]? true: false;
-
-    
+    const liked = likes.some(like => like.userId === currentUser?.id);
 
      const shadowStyles = {
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.06,
-    shadowRadius: 6,
-    elevation: 1,
-  }
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.06,
+      shadowRadius: 6,
+      elevation: 1,
+    }
 
   useEffect(()=>{
     setLikes(item?.postLikes);
@@ -69,7 +67,7 @@ const PostCard = ({
   const onLike = async ()=>{
 
     if(liked){
-      let updatedLikes = likes.filter(like=> like.userId!=currentUser?.id);
+      let updatedLikes = likes.filter(like=> like.userId!= currentUser?.id);
       setLikes([...updatedLikes]);
 
       let res = await removePostLike(item?.id, currentUser?.id);
@@ -93,17 +91,6 @@ const PostCard = ({
     
   }
 
-  const onShare = async ()=>{
-    let content = {message: stripHtmlTags(item?.body)};
-    if(item?.file){
-      setLoading(true);
-      let uri = await downloadFile(getSupabaseFileUrl(item.file).uri);
-      content.url = uri;
-      setLoading(false);
-    }
-    Share.share(content);
-      
-  }
   const handlePostDelete = ()=>{
     Alert.alert('Confirm', 'Are you sure you want to do this?', [
         {
@@ -144,7 +131,7 @@ const PostCard = ({
           )
         }
         {
-          showDelete && currentUser.id==item.userId && (
+          showDelete && currentUser.id === item.userId && (
             <View style={styles.actions}>
               <TouchableOpacity onPress={()=> onEdit(item)}>
                 <Icon name="pen" size={hp(2.5)} color={theme.colors.text} />
@@ -224,21 +211,9 @@ const PostCard = ({
 
           </Text>
         </View>
-        <View style={styles.footerButton}>
-          {
-            loading? (
-              <Loading size="small" />
-            ):(
-              <TouchableOpacity onPress={onShare}>
-                <Icon name="share" size={24} color={theme.colors.textLight} />
-              </TouchableOpacity>
-            )
-          }
-          
-        </View>
+        
       </View>
 
-      
     </View>
 
   )
@@ -256,7 +231,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     backgroundColor: 'white',
     borderWidth: 0.5,
-    borderColor: theme.colors.light_gray,
+    borderColor: theme.colors.bg,
     shadowColor: '#000'
   },
   header: {

@@ -1,5 +1,5 @@
 import { View, Text, LogBox } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback  } from 'react'
 import { Stack, useRouter } from 'expo-router'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
 import { supabase } from '../lib/supabase'

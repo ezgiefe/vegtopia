@@ -33,65 +33,38 @@ export const createOrUpdatePost = async (post)=>{
 }
 
 
-export const fetchPosts = async (limit=10, userId=null)=>{
-    try{
-
-        // .select(`
-        //     id,
-        //     body,
-        //     file, 
-        //     users ( id, name, image )
-        // `);
-
-        // add postLikes later when wroking on post like
-
-        // .limit(limit); // later when implementing pagination
-
-        // comments: getting all the comments ona post, then getting user within each comment
-
-        if(userId){
-            const { data, error } = await supabase
+export const fetchPosts = async (limit = 10, userId = null) => {
+    try {
+        let query = supabase
             .from('posts')
             .select(`
                 *,
-                user: users ( id, name, image ),
+                user: users (id, name, username, image, lifeStyle), 
                 postLikes (*),
                 comments (count)
             `)
-            .eq('userId', userId)
-            .order('created_at', {ascending: false })
-            .limit(limit);
-            if(error){
-                console.log('fetchPosts error: ', error);
-                return {success: false, msg: "Could not fetch the posts"};
-            }
-            return {success: true, data: data};
-        }else{
-            const { data, error } = await supabase
-            .from('posts')
-            .select(`
-                *,
-                user: users ( id, name, image ),
-                postLikes (*),
-                comments (count)
-            `)
-            .order('created_at', {ascending: false })
-            .limit(limit);
-            if(error){
-                console.log('fetchPosts error: ', error);
-                return {success: false, msg: "Could not fetch the posts"};
-            }
-            return {success: true, data: data};
+            .order('created_at', { ascending: false });
+
+        if (userId) { 
+            query = query.eq('userId', userId);
         }
-        
 
-        
+        query = query.limit(limit); 
 
-    }catch(error){
-        console.log('fetchPosts error: ', error);
-        return {success: false, msg: "Could not fetch the posts"};
+        const { data, error } = await query; 
+
+        if (error) {
+            console.error('fetchPosts error:', error); 
+            return { success: false, msg: error.message || "Gönderiler çekilemedi." }; 
+        }
+        return { success: true, data: data };
+
+    } catch (err) {
+        console.error('Exception in fetchPosts:', err.message);
+        return { success: false, msg: err.message || "Beklenmedik bir hata oluştu." };
     }
-}
+};
+        
 
 export const fetchPostDetails = async (postId)=>{
     try{

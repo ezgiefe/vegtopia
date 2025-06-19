@@ -43,12 +43,13 @@ const RichTextEditor = ({
           disabled={false}
           // fontSize={handleFontSize}
           selectedIconTint={theme.colors.primary}
+          
       />
       <RichEditor
         ref={editorRef}
         containerStyle={styles.rich}
         editorStyle={styles.contentStyle}
-        placeholder={"What's on your mind?"}
+        placeholder={"Bugün aklında neler var?"}
         onChange={onChange}
         editorInitializedCallback={() => {}}
       />
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     rich: {
     minHeight: 240,
     flex: 1,
-    borderWidth: 1.5,
+    borderWidth: 1,
     borderTopWidth: 0,
     borderBottomRightRadius: theme.radius.xl,
     borderBottomLeftRadius: theme.radius.xl,
@@ -80,7 +81,10 @@ const styles = StyleSheet.create({
   richBar: {
     borderTopLeftRadius: theme.radius.xl,
     borderTopRightRadius: theme.radius.xl,
-    backgroundColor: theme.colors.light_gray
+    backgroundColor: theme.colors.bg,
+    borderWidth: 1,
+    borderColor: theme.colors.light_gray,
+    
   },
 
   flatStyle: {

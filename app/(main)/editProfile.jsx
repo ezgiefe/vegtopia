@@ -207,17 +207,18 @@ const EditProfile = () => {
                     <Picker.Item label="Navegan" value="Navegan" />
                 </Picker>
             </View>
-
-            <Button 
-              title="Şifreyi Değiştir" 
-              onPress={() => router.push('changePassword')} // 'changePassword' rotasının doğru olduğundan emin ol
-              style={{marginTop: hp(2)}} // Biraz boşluk bırakmak için
-            />
-
-            {/* button */}
+            
+            <Pressable onPress={() => router.push('changePassword')}>
+              <Text style={styles.password}>
+                Şifreni mi unuttun?
+              </Text>
+            </Pressable>
+            
             <Button title="Update" loading={loading} onPress={onSubmit} />
           </View>
+          
         </ScrollView>
+        
       </View>
     </ScreenWrapper>
   )
@@ -257,7 +258,7 @@ const styles = StyleSheet.create({
     elevation: 7,
   },
   form: {
-    gap: 18,
+    gap: 25,
     marginTop: 20,
   },
   input: {
@@ -276,4 +277,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingVertical: 15,
   },
+  password: {
+    color: theme.colors.primary, 
+    fontWeight: theme.fonts.semibold,
+    fontSize: hp(1.7),
+    textAlign: 'right',
+    marginRight: 30,
+  }
 })
