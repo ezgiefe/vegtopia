@@ -1,50 +1,71 @@
-# Welcome to your Expo app 👋
+# 📱 Vegtopia - A React Native Social Media App for Vegans 🌱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+👋 Welcome
 
-## Get started
+Vegtopia is a cross-platform mobile social media application developed using React Native. It is designed specifically for the vegan community, offering a dedicated and inclusive space to connect, share, and inspire.
 
-1. Install dependencies
+*🚧 Note: This project is currently in its early development stage and is being actively improved. New features and enhancements are added regularly.*
 
-   ```bash
-   npm install
-   ```
+## 🎯 Project Purpose
+In today's general-purpose social media platforms, it's often difficult for niche communities, such as vegan community, to find a supportive enviroment. Vegtopia was created to:
 
-2. Start the app
+- Foster a safe and supportive community for vegans
+- Avoid exposure to disturbing content such as animal food images
+- Encourage recipe sharing, lifestyle tips, and events within the vegan ecosystem
 
-   ```bash
-    npx expo start
-   ```
+## 🛠️ Technologies Used
+- React Native (with Expo)
+- JavaScript / JSX
+- Supabase as BaaS
+- React Navigation
 
-In the output, you'll find options to open the app in a
+## 🔍 Key Features
+- Sign up/ out and login
+- Profile creation, uptade
+- Profile picture upload, edit and delete
+- Post creation, update and delete
+- more creative post designs with rich text editor
+- post pictures
+- Comment on posts and delete comment
+- Like posts
+- home feed display
+- View other users' profiles
+- Serach for other users
+- View notifications
+- Change password
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📱 How the app looks like?
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+#### Vegtopia Welcome, SignUp and Login Screens
 
-## Get a fresh project
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/7842320d-c5ca-41d9-8700-ac5cc5e74454" />
 
-When you're ready, run:
+#### Default Profile, EditProfile and ChangePassword Screens
 
-```bash
-npm run reset-project
-```
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/2abf6e20-05fb-4c30-8633-5d433c5c44fc" />
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+#### Profile Screen After Completing  Profile Information
 
-## Learn more
+<img height="500" alt="image" src="https://github.com/user-attachments/assets/b5d9e934-4ed7-4e7f-bd93-c320e9d9ee2b" />
 
-To learn more about developing your project with Expo, look at the following resources:
+#### NewPost Screen And It's Features
+   *Thanks to rich text editor, users can create more creative contents.* 
+   
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/826ce4f4-e5f4-4640-a4ad-d14ac055f5f9" />
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+#### Post Detail Screen
+   *Two perspectives of post detaiils. the figure on the left is showing the user is the owner of the post and the right is a post from another user.*
+   
+<img width="700" height="926" alt="image" src="https://github.com/user-attachments/assets/3468d6e5-447a-4850-85cf-a723ae3c15bf" />
 
-## Join the community
+#### Home Feed Display Screen
 
-Join our community of developers creating universal apps.
+<img width="700" height="899" alt="image" src="https://github.com/user-attachments/assets/2e9c6594-11bf-4dca-adf2-0387eee5cc9e" />
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+#### Serach Screen and Profile View Screen
+
+<img width="800" height="626" alt="image" src="https://github.com/user-attachments/assets/b7271f1c-c53e-4e60-8568-79feaedf5df7" />
+
+#### Notification Icon and Notification Screen
+
+<img width="800" height="661" alt="image" src="https://github.com/user-attachments/assets/e08fb19c-6463-448d-8eb2-41d880509cb1" />
